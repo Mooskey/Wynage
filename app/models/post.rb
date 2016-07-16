@@ -15,4 +15,12 @@ class Post < ApplicationRecord
   def to_s
     title
   end
+
+  def date_created
+    created_at.strftime('%m/%d/%y')
+  end
+  def date_updated
+    updated_at.strftime('%m/%d/%y')
+  end
+
 end
