@@ -1,27 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pictures</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div id="imgWrapper"
+  <ul>
     <% @pictures.each do |picture| %>
-      <tr>
-        <td><%= picture.title %></td>
-        <td><%= image_tag picture.url %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <li>
+          <div>
+            <h2><%= picture.title %></h2>
+            <%= image_tag picture.url %>
+          </div>
+        </li>
     <% end %>
-  </tbody>
-</table>
-
+  </ul>
+</div>
 <br>
 <%= link_to 'New Picture', new_picture_path %>

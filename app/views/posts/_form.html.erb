@@ -1,3 +1,5 @@
+<div id="postsWrapper">
+
 <%= form_for(post) do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +12,7 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -25,3 +27,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+</div>
