@@ -9,6 +9,25 @@
   </head>
 
   <body>
+
+  <div id="user_header">
+    <!-- if we have current user it will display logged in as current user -->
+    <% if current_user %>
+      Logged in as <%= current_user.email %>
+      <%= link_to "Log Out", logout_path %>
+    <% else %>
+    <!-- if we don't have a user it will display sign up and login link -->
+      <%= link_to "Sign Up", signup_path %> or
+      <%= link_to "Log In", login_path %>
+    <% end %>
+  </div>
+<!-- loop through all flash messages, if you have flash message display here -->
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, class: "alert alert-#{key}") do %>
+    <p><%= value %></p>
+    <% end %>
+  <% end %>
+
     <%= yield %>
   </body>
 </html>
