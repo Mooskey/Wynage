@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'posts/all', to: 'posts#all', as: 'all'
   resources :posts
   resources :sessions, only: [:new, :create, :destroy]
 
