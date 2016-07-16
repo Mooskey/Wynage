@@ -7,6 +7,10 @@
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
+<!-- The image_tag method is a "view helper", a method that helps you generate HTML code -->
+<p>
+  <%= image_tag @post.url %>
+</p>
 
 <p>
   <strong>Content:</strong>
