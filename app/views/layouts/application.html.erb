@@ -3,28 +3,38 @@
   <head>
     <title>Wynage</title>
     <%= csrf_meta_tags %>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="  https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse"></button>
+      <h1 id="title">WYNAGE</h1>
+      <div id="user_header" class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="header_links nav navbar-nav">
+          <li><%= link_to 'Home', root_path %> |</li>
+        <li><%= link_to 'Post', posts_path %> |</li>
+        <li><%= link_to 'All Posts', all_path %> |</li>
+        <!-- <%= link_to 'Pictures', pictures_path %> | -->
+        <!-- if we have current user it will display logged in as current user -->
+        <% if current_user %>
+          Logged in as <%= current_user.email %>
+        <li><%= link_to "Log Out", logout_path %></li>
+        <% else %>
+        <!-- if we don't have a user it will display sign up and login link -->
+          <li><%= link_to "Sign Up", signup_path %> or</li>
+          <li><%= link_to "Log In", login_path %></li>
+        </ul>
+        <% end %>
+      </div>
+    </nav>
 
-  <div id="user_header">
-    <%= link_to 'Home', root_path %> |
-    <%= link_to 'Post', posts_path %> |
-    <%= link_to 'All Posts', all_path %> |
-    <!-- <%= link_to 'Pictures', pictures_path %> | -->
-    <!-- if we have current user it will display logged in as current user -->
-    <% if current_user %>
-      Logged in as <%= current_user.email %>
-      <%= link_to "Log Out", logout_path %>
-    <% else %>
-    <!-- if we don't have a user it will display sign up and login link -->
-      <%= link_to "Sign Up", signup_path %> or
-      <%= link_to "Log In", login_path %>
-    <% end %>
-  </div>
+
 <!-- loop through all flash messages, if you have flash message display here -->
   <% flash.each do |key, value| %>
     <%= content_tag(:div, class: "alert alert-#{key}") do %>

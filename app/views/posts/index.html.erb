@@ -5,7 +5,7 @@
     <tr>
       <th>User</th>
       <th>Title</th>
-      <th>Created | Updated</th>
+      <th>Date Created</th>
       <!-- <th>Content</th> -->
       <th colspan="3"></th>
     </tr>
@@ -18,8 +18,7 @@
         <td><%= post.title %></td>
         <!-- <td><%= post.content %></td> -->
         <td>
-        <%= post.date_created %> |
-        <%= post.date_updated %>
+        <%= post.date_created %>
         </td>
         <td><%= link_to 'Show', post %></td>
         <td><% if current_user && post.user == current_user %><%= link_to 'Edit', edit_post_path(post) %><% end %></td>
